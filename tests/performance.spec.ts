@@ -24,12 +24,18 @@ test.describe('Performance Tests', () => {
         // Performance budget: 3 seconds
         expect(loadTime).toBeLessThan(3000);
         
-        // Get performance metrics
-        const metrics = await page.evaluate(() => ({
-            domContentLoaded: performance.timing.domContentLoadedEventEnd - performance.timing.navigationStart,
-            load: performance.timing.loadEventEnd - performance.timing.navigationStart,
-            firstPaint: performance.getEntriesByType('paint')[0]?.startTime || 0
-        }));
+        // Get performance metrics using modern Performance API
+        const metrics = await page.evaluate(() => {
+            const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+            const paint = performance.getEntriesByType('paint');
+            const firstPaint = paint.find(entry => entry.name === 'first-paint');
+            
+            return {
+                domContentLoaded: navigation.domContentLoadedEventEnd - navigation.startTime,
+                load: navigation.loadEventEnd - navigation.startTime,
+                firstPaint: firstPaint ? firstPaint.startTime : 0
+            };
+        });
         
         // Log metrics for monitoring
         console.log('Performance Metrics:', metrics);

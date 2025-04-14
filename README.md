@@ -10,7 +10,7 @@ This repository contains automated tests for the Sauce Demo website (https://www
 - Visual comparison tests
 - Accessibility tests
 - Performance monitoring tests
-- API tests
+- Form submission tests
 - Cross-browser testing support
 - CI/CD integration with GitHub Actions
 - Docker containerization
@@ -85,7 +85,7 @@ docker-compose up playwright-ui
 - `tests/visual.spec.ts` - Visual comparison tests
 - `tests/accessibility.spec.ts` - Accessibility tests
 - `tests/performance.spec.ts` - Performance monitoring tests
-- `tests/api.spec.ts` - API tests
+- `tests/api.spec.ts` - Form submission tests
 
 ## CI/CD Integration
 
@@ -104,7 +104,7 @@ The project includes GitHub Actions workflow for continuous integration:
 5. Visual regression testing
 6. Accessibility testing
 7. Performance monitoring
-8. API testing
+8. Form submission testing
 9. Screenshot capture on test failure
 10. HTML test reports
 11. CI/CD friendly configuration
