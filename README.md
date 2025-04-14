@@ -9,12 +9,17 @@ This repository contains automated tests for the Sauce Demo website (https://www
 - Checkout journey tests
 - Visual comparison tests
 - Accessibility tests
+- Performance monitoring tests
+- API tests
 - Cross-browser testing support
+- CI/CD integration with GitHub Actions
+- Docker containerization
 
 ## Prerequisites
 
 - Node.js (v14 or higher)
 - npm (v6 or higher)
+- Docker and Docker Compose (optional)
 
 ## Setup
 
@@ -40,9 +45,36 @@ Run tests with UI:
 npm run test:ui
 ```
 
+Run tests in headed mode:
+```bash
+npm run test:headed
+```
+
+Run tests in debug mode:
+```bash
+npm run test:debug
+```
+
+Run tests in parallel:
+```bash
+npm run test:parallel
+```
+
 View test report:
 ```bash
 npm run report
+```
+
+## Docker Support
+
+Run tests in Docker:
+```bash
+docker-compose up playwright-tests
+```
+
+Run tests with UI in Docker:
+```bash
+docker-compose up playwright-ui
 ```
 
 ## Test Structure
@@ -52,6 +84,16 @@ npm run report
 - `tests/checkout.spec.ts` - Checkout journey tests
 - `tests/visual.spec.ts` - Visual comparison tests
 - `tests/accessibility.spec.ts` - Accessibility tests
+- `tests/performance.spec.ts` - Performance monitoring tests
+- `tests/api.spec.ts` - API tests
+
+## CI/CD Integration
+
+The project includes GitHub Actions workflow for continuous integration:
+- Runs on push to main/master branches
+- Runs on pull requests to main/master branches
+- Uploads test reports as artifacts
+- Supports cross-browser testing
 
 ## Best Practices Implemented
 
@@ -61,9 +103,12 @@ npm run report
 4. Cross-browser testing support
 5. Visual regression testing
 6. Accessibility testing
-7. Screenshot capture on test failure
-8. HTML test reports
-9. CI/CD friendly configuration
+7. Performance monitoring
+8. API testing
+9. Screenshot capture on test failure
+10. HTML test reports
+11. CI/CD friendly configuration
+12. Docker containerization
 
 ## Contributing
 

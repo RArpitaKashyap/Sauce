@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  playwright-tests:
+    build: .
+    volumes:
+      - ./playwright-report:/app/playwright-report
+    environment:
+      - CI=true
+    command: npx playwright test
+
+  playwright-ui:
+    build: .
+    volumes:
+      - ./playwright-report:/app/playwright-report
+    ports:
+      - "9323:9323"
+    environment:
+      - CI=true
+    command: npx playwright test --ui 
